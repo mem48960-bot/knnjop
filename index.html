@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dienstleistungsservice Rokitta – Haus, Garten & Objektpflege in Duisburg</title>
+<meta name="description" content="Zuverlässige Dienstleistungen rund um Haus, Garten und Objektpflege in Duisburg und Umgebung. Gartenpflege, Hausmeisterservice und Winterdienst – alles aus einer Hand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15241c;
+    --forest:#244234;
+    --moss:#557e44;
+    --moss-dark:#456b37;
+    --leaf:#7fb069;
+    --paper:#f2f4ee;
+    --sand:#e8e2d4;
+    --white:#ffffff;
+    --line:rgba(21,36,28,.12);
+    --line-soft:rgba(21,36,28,.07);
+    --muted:#5a6b60;
+    --shadow:0 1px 2px rgba(21,36,28,.04), 0 12px 32px -16px rgba(21,36,28,.18);
+    --r:18px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    font-size:clamp(1rem,.97rem + .2vw,1.12rem);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;letter-spacing:-.02em;font-weight:700}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--moss);display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--moss);display:inline-block}
+
+  /* ---------- Seasonal signature strip ---------- */
+  .seasons{display:flex;gap:0;border:1px solid var(--line);border-radius:100px;overflow:hidden;background:var(--white);font-size:.74rem;font-weight:600;letter-spacing:.04em}
+  .seasons span{padding:.5rem .95rem;color:var(--muted);position:relative;white-space:nowrap}
+  .seasons span + span{border-left:1px solid var(--line-soft)}
+  .seasons span::before{content:"";width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:.5rem;vertical-align:middle}
+  .seasons .fr::before{background:#9ec96f}
+  .seasons .so::before{background:#5aa86b}
+  .seasons .he::before{background:#c69a4e}
+  .seasons .wi::before{background:#86b8d6}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(242,244,238,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:.7rem;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.18rem;letter-spacing:-.02em}
+  .brand .mark{width:38px;height:38px;border-radius:11px;background:var(--forest);display:grid;place-items:center;flex:0 0 auto}
+  .brand .mark svg{width:22px;height:22px}
+  .brand small{display:block;font-family:"Hanken Grotesk";font-weight:500;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  nav ul{display:flex;gap:2rem;list-style:none;font-weight:500;font-size:.98rem}
+  nav a{position:relative;padding:.3rem 0;color:var(--ink);opacity:.85;transition:opacity .2s}
+  nav a:hover{opacity:1}
+  nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--moss);transition:width .25s}
+  nav a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:1.2rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;border-radius:100px;padding:.78rem 1.4rem;transition:transform .15s,background .2s,box-shadow .2s;font-size:.97rem;cursor:pointer;border:none;font-family:inherit}
+  .btn-primary{background:var(--moss);color:#fff;box-shadow:0 8px 20px -10px rgba(85,126,68,.8)}
+  .btn-primary:hover{background:var(--moss-dark);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--forest);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--white);transform:translateY(-2px)}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;cursor:pointer}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:clamp(3.5rem,7vw,6.5rem) 0 clamp(2.5rem,5vw,4rem)}
+  .hero-inner{max-width:78ch}
+  .hero h1{font-size:clamp(2.7rem,6.5vw,5.4rem);font-weight:800;margin:1.5rem 0 1.4rem;max-width:18ch}
+  .hero h1 .accent{color:var(--moss);position:relative;white-space:nowrap}
+  .hero h1 .accent svg{position:absolute;left:0;bottom:-.12em;width:100%;height:.4em;color:var(--leaf)}
+  .hero p.lead{font-size:clamp(1.08rem,1.4vw,1.32rem);color:var(--muted);max-width:58ch;margin-bottom:2rem}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:2rem}
+  .loc{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;color:var(--forest);font-size:.96rem}
+  .loc svg{width:18px;height:18px;color:var(--moss)}
+  .hero-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(2.8rem,5vw,4rem);padding-top:clamp(2rem,4vw,2.8rem);border-top:1px solid var(--line)}
+  .hero-facts .f .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--forest);line-height:1}
+  .hero-facts .f p{color:var(--muted);font-size:.96rem;margin-top:.5rem;max-width:24ch}
+  @media (max-width:680px){.hero-facts{grid-template-columns:1fr;gap:1.6rem}}
+
+  /* ---------- Section base ---------- */
+  section{padding:clamp(3.5rem,7vw,6rem) 0}
+  .sec-head{max-width:62ch;margin-bottom:3rem}
+  .sec-head h2{font-size:clamp(2rem,3.6vw,3.1rem);margin:1rem 0 1.1rem}
+  .sec-head p{color:var(--muted);font-size:1.12rem}
+
+  /* Intro / Leistungen auf einen Blick */
+  .intro{background:var(--white);border-radius:32px;margin-top:clamp(1rem,2vw,2rem);padding:clamp(2.4rem,5vw,4rem)}
+  .intro-head{max-width:60ch;margin-bottom:clamp(2.2rem,4vw,3.2rem)}
+  .intro h2{font-size:clamp(1.9rem,3.2vw,2.7rem);margin:1.1rem 0 1.6rem;max-width:24ch}
+  .intro .points{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.6rem,3vw,2.8rem);padding-top:clamp(1.8rem,3vw,2.6rem);border-top:1px solid var(--line-soft)}
+  .intro .points p{color:var(--muted)}
+  .intro .points p strong{color:var(--ink);font-weight:700}
+  @media (max-width:780px){.intro .points{grid-template-columns:1fr;gap:1.6rem}}
+
+  /* ---------- Services ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .card{background:var(--white);border:1px solid var(--line-soft);border-radius:var(--r);padding:2rem 1.9rem;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:1rem}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+  .card .ic{width:54px;height:54px;border-radius:14px;background:var(--paper);display:grid;place-items:center;color:var(--forest)}
+  .card .ic svg{width:28px;height:28px}
+  .card h3{font-size:1.42rem;font-weight:700}
+  .card p{color:var(--muted);font-size:1rem}
+  .card .tag{margin-top:auto;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--moss)}
+
+  /* ---------- Values band (Unser Service) ---------- */
+  .values{background:var(--forest);color:#eaf0e6;border-radius:32px}
+  .values .wrap{padding:clamp(2.6rem,5vw,4.5rem) 24px}
+  .values .eyebrow{color:var(--leaf)}
+  .values .eyebrow::before{background:var(--leaf)}
+  .values h2{color:#fff;font-size:clamp(1.9rem,3.4vw,2.9rem);margin:1rem 0 1.2rem;max-width:20ch}
+  .values .lead{color:#c4d3bc;max-width:54ch;margin-bottom:2.8rem}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .vitem{padding:1.6rem 0;border-top:1px solid rgba(255,255,255,.16)}
+  .vitem .n{font-family:"Bricolage Grotesque";font-weight:700;font-size:.95rem;color:var(--leaf);letter-spacing:.04em}
+  .vitem h4{font-family:"Bricolage Grotesque";font-size:1.3rem;color:#fff;margin:.7rem 0 .5rem;font-weight:700}
+  .vitem p{color:#bccdb4;font-size:.98rem}
+
+  /* ---------- About ---------- */
+  .about{max-width:760px;margin:0 auto;text-align:center}
+  .about .eyebrow{justify-content:center}
+  .about h2{font-size:clamp(2rem,3.6vw,3rem);margin:1rem 0 1.3rem}
+  .about p{color:var(--muted);margin-bottom:1.2rem}
+  .about .tags{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin:1.8rem 0}
+  .about .tags span{background:var(--white);border:1px solid var(--line);border-radius:100px;padding:.5rem 1.1rem;font-size:.9rem;font-weight:600;color:var(--forest)}
+  .about .contact-quick{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:1.6rem 0 1.9rem}
+  .about .contact-quick a{display:inline-flex;align-items:center;gap:.7rem;font-weight:600;color:var(--forest);font-size:1.08rem}
+  .about .contact-quick svg{width:20px;height:20px;color:var(--moss);flex:0 0 auto}
+
+  /* ---------- Contact ---------- */
+  #kontakt{scroll-margin-top:90px}
+  .contact-card{background:var(--white);border-radius:32px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--shadow)}
+  .contact-form{padding:clamp(2.2rem,4vw,3.4rem)}
+  .contact-form h2{font-size:clamp(1.9rem,3.2vw,2.6rem);margin:.8rem 0 .6rem}
+  .contact-form > p{color:var(--muted);margin-bottom:2rem}
+  .field{margin-bottom:1.2rem}
+  .field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.45rem}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:.85rem 1rem;font-family:inherit;font-size:1rem;background:var(--paper);color:var(--ink);transition:border-color .2s,box-shadow .2s}
+  .field textarea{min-height:120px;resize:vertical}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(85,126,68,.16);background:#fff}
+  .contact-form .btn-primary{width:100%;justify-content:center;margin-top:.5rem}
+  .contact-aside{background:var(--forest);color:#eaf0e6;padding:clamp(2.2rem,4vw,3.4rem);display:flex;flex-direction:column;gap:1.6rem}
+  .contact-aside h3{color:#fff;font-size:1.4rem}
+  .contact-aside .row{display:flex;gap:.9rem;align-items:flex-start}
+  .contact-aside .row svg{width:22px;height:22px;color:var(--leaf);flex:0 0 auto;margin-top:2px}
+  .contact-aside .row b{color:#fff;display:block;font-weight:700}
+  .contact-aside .row a,.contact-aside .row span{color:#c4d3bc}
+  .contact-aside .row a:hover{color:#fff}
+  .contact-aside .map{margin-top:auto;border-radius:16px;overflow:hidden;height:170px;background:#2f5240;position:relative}
+  .contact-aside .map .pin{position:absolute;inset:0;display:grid;place-items:center;color:#dfe9d8;font-size:.85rem;text-align:center;gap:.4rem;flex-direction:column;display:flex;align-items:center;justify-content:center}
+
+  /* ---------- Footer ---------- */
+  footer{padding:3.5rem 0 2.5rem;border-top:1px solid var(--line-soft);margin-top:2rem}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+  .foot .legal{color:var(--muted);font-size:.9rem}
+  .foot nav a{font-size:.92rem;opacity:.8}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:920px){
+    .hero-grid,.intro-inner,.about,.contact-card{grid-template-columns:1fr}
+    .cards,.vgrid{grid-template-columns:1fr}
+    nav ul{display:none}
+    .menu-toggle{display:block}
+    .nav-cta .btn-ghost{display:none}
+    nav.open ul{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--paper);padding:1.2rem 24px;gap:1rem;border-bottom:1px solid var(--line)}
+    .seasons{font-size:.66rem}
+    .seasons span{padding:.45rem .7rem}
+  }
+  @media (max-width:560px){
+    .seasons .lbl{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="mark">
+        <img src="logo-rokitta.png" alt="Rokitta Logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">
+      </span>
+      <span>Rokitta<small>Dienstleistungsservice</small></span>
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#service">Service</a></li>
+        <li><a href="#ueber">Über uns</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#kontakt" class="btn btn-primary">Kontakt aufnehmen</a>
+      <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#244234" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<a id="top"></a>
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-inner reveal">
+      <span class="eyebrow">Haus · Garten · Objektpflege</span>
+      <h1>Rund um Ihr Objekt –
+        <span class="accent">alles aus einer Hand
+          <svg viewBox="0 0 300 12" preserveAspectRatio="none" fill="none"><path d="M2 9C60 3 150 2 298 6" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+        </span>
+      </h1>
+      <p class="lead">Bei Dienstleistungsservice Rokitta erhalten Sie zuverlässige und vielseitige Dienstleistungen rund um Haus, Garten und Objektpflege. Saubere Arbeit, Termintreue und faire Preise – von der ersten Beratung bis zur fachgerechten Ausführung.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">Jetzt anfragen
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#leistungen" class="btn btn-ghost">Unsere Leistungen</a>
+      </div>
+      <span class="loc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Für Privatkunden, Gewerbe & Hausverwaltungen in Duisburg und Umgebung
+      </span>
+    </div>
+
+    <div class="hero-facts reveal">
+      <div class="f">
+        <span class="n">365</span>
+        <p>Tage im Jahr für Sie da – von Gartenpflege bis Winterdienst.</p>
+      </div>
+      <div class="f">
+        <span class="n">4</span>
+        <p>Bereiche aus einer Hand: Garten, Hausmeister, Reinigung, Winterdienst.</p>
+      </div>
+      <div class="f">
+        <span class="n">1</span>
+        <p>Fester Ansprechpartner, der sich kümmert, bevor Probleme entstehen.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ INTRO / LEISTUNGEN AUF EINEN BLICK ============ -->
+<section id="leistungen" style="padding-top:0">
+  <div class="wrap">
+    <div class="intro reveal">
+      <div class="intro-head">
+        <span class="eyebrow">Auf einen Blick</span>
+        <h2>Ein Ansprechpartner für Haus, Garten und Immobilie</h2>
+        <div class="seasons" role="img" aria-label="Ganzjähriger Service">
+          <span class="fr"><span class="lbl">Frühling</span></span>
+          <span class="so"><span class="lbl">Sommer</span></span>
+          <span class="he"><span class="lbl">Herbst</span></span>
+          <span class="wi"><span class="lbl">Winter</span></span>
+        </div>
+      </div>
+      <div class="points">
+        <p>Wir betreuen <strong>Privatkunden, Gewerbebetriebe und Hausverwaltungen</strong> in Duisburg und Umgebung. Von der ersten Beratung bis zur fachgerechten Ausführung stehen wir für saubere Arbeit, Termintreue und faire Preise.</p>
+        <p>Unser Ziel ist es, Ihre <strong>Außenanlagen und Immobilien dauerhaft gepflegt, sicher und repräsentativ</strong> zu halten.</p>
+        <p>Ob regelmäßige Gartenpflege, Hausmeistertätigkeiten, Anstricharbeiten oder Winterdienst – wir kümmern uns darum, dass alles reibungslos funktioniert.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE CARDS ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Unsere Leistungen</span>
+      <h2>Was wir für Sie übernehmen</h2>
+      <p>Vielseitige Dienstleistungen rund um Ihr Objekt – flexibel kombinierbar und individuell an Ihre Anforderungen angepasst.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7Z"/><path d="M12 12c0-4-3-7-7-7 0 4 3 7 7 7Z"/></svg>
+        </span>
+        <h3>Gartenpflege</h3>
+        <p>Professionelle Grünflächenpflege für Wohnanlagen und Gewerbe. Rasenmähen, Hecken schneiden und Saisonarbeiten – ganzjährig gepflegt.</p>
+        <span class="tag">Ganzjährig</span>
+      </article>
+      <article class="card reveal">
+        <span class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+        </span>
+        <h3>Hausmeisterservice</h3>
+        <p>Vollumfängliche Betreuung für Ihre Immobilie. Reinigung, Instandhaltung und Kleinreparaturen – immer pünktlich und gründlich.</p>
+        <span class="tag">Objektbetreuung</span>
+      </article>
+      <article class="card reveal">
+        <span class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg>
+        </span>
+        <h3>Winterdienst &amp; Instandhaltung</h3>
+        <p>Sichere Wege durch Schneeräumung und Streuen. Dazu Anstricharbeiten und schnelle Hilfe bei Reparaturen.</p>
+        <span class="tag">Sicherheit</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUES (UNSER SERVICE) ============ -->
+<section id="service" style="padding-top:0">
+  <div class="wrap">
+    <div class="values reveal">
+      <div class="wrap" style="padding-left:0;padding-right:0">
+        <span class="eyebrow">Unser Service</span>
+        <h2>Wir kümmern uns, bevor Probleme entstehen</h2>
+        <p class="lead">Unser Service steht für Flexibilität, Zuverlässigkeit und persönliche Betreuung. Wir reagieren schnell, arbeiten sorgfältig und sorgen mit einem starken Servicegedanken dafür, dass Sie sich entspannt zurücklehnen können – während wir uns um Ihr Objekt kümmern.</p>
+        <div class="vgrid">
+          <div class="vitem">
+            <span class="n">Flexibilität</span>
+            <h4>Individuell angepasst</h4>
+            <p>Wir passen unsere Leistungen genau an Ihre Anforderungen an – ob einmalig oder regelmäßig.</p>
+          </div>
+          <div class="vitem">
+            <span class="n">Zuverlässigkeit</span>
+            <h4>Fester Ansprechpartner</h4>
+            <p>Ein Team, das Sie kennt und auf das Sie sich verlassen können – Termintreue inklusive.</p>
+          </div>
+          <div class="vitem">
+            <span class="n">Sorgfalt</span>
+            <h4>Professioneller Eindruck</h4>
+            <p>Damit Ihre Immobilie stets gepflegt, sicher und repräsentativ wirkt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="ueber">
+  <div class="wrap about">
+    <div class="reveal">
+      <span class="eyebrow">Über uns</span>
+      <h2>Erstklassige Dienstleistungen rund um Haus und Garten</h2>
+      <p>Wir bei Dienstleistungsservice Rokitta sind stolz auf erstklassige Dienstleistungen rund um Haus und Garten. Unsere Angebote umfassen Gartenpflege, Hausmeisterservice, Reinigung und Winterdienst – von Rasenmähen über Hecken schneiden bis hin zu professioneller Objektbetreuung.</p>
+      <p>Von der Beratung bis zur lückenlosen Umsetzung begleiten wir Sie kompetent. Überzeugen Sie sich von unseren Referenzen und kontaktieren Sie uns:</p>
+      <div class="tags">
+        <span>Garten</span>
+        <span>Hausmeister</span>
+        <span>Reinigung</span>
+        <span>Winterdienst</span>
+      </div>
+      <div class="contact-quick">
+        <a href="tel:015679764799">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          01567 9764799
+        </a>
+        <a href="mailto:info@ds-rokitta.de">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          info@ds-rokitta.de
+        </a>
+      </div>
+      <a href="#kontakt" class="btn btn-primary">Los geht's!
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="kontakt" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div class="contact-form">
+        <span class="eyebrow">Kontakt</span>
+        <h2>Kontaktiere uns</h2>
+        <p>Schreiben Sie uns kurz, worum es geht – wir melden uns zeitnah mit einem Vorschlag oder Angebot.</p>
+        <form id="kontaktForm">
+          <div class="field">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">E-Mail-Adresse *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="msg">Ihre Nachricht</label>
+            <textarea id="msg" name="msg" placeholder="Wobei können wir helfen?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Nachricht senden
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+        </form>
+      </div>
+      <aside class="contact-aside">
+        <h3>Dienstleistungsservice Rokitta</h3>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          <span><b>Telefon</b><a href="tel:015679764799">01567 9764799</a></span>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          <span><b>E-Mail</b><a href="mailto:info@ds-rokita.de">info@ds-rokita.de</a></span>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><b>Einsatzgebiet</b><span>Duisburg und Umgebung</span></span>
+        </div>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Duisburg" target="_blank" rel="noopener" aria-label="Karte von Duisburg öffnen">
+          <span class="pin">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#7fb069" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Duisburg · Karte öffnen
+          </span>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="brand">
+      <span class="mark">
+        <img src="logo-rokitta.png" alt="Rokitta Logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">
+      </span>
+      <span>Rokitta<small>Dienstleistungsservice</small></span>
+    </a>
+    <nav>
+      <span style="display:flex;gap:1.6rem;flex-wrap:wrap">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#service">Service</a>
+        <a href="#ueber">Über uns</a>
+        <a href="#kontakt">Kontakt</a>
+      </span>
+    </nav>
+    <span class="legal">© <span id="jahr"></span> Dienstleistungsservice Rokitta · Duisburg</span>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const nav = document.getElementById('nav');
+  const toggle = document.querySelector('.menu-toggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open'); toggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Year
+  document.getElementById('jahr').textContent = new Date().getFullYear();
+
+  // Contact form -> opens mail with prefilled content
+  document.getElementById('kontaktForm').addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const name = encodeURIComponent(document.getElementById('name').value);
+    const email = document.getElementById('email').value;
+    const msg = encodeURIComponent(document.getElementById('msg').value);
+    const body = `Name: ${decodeURIComponent(name)}%0D%0AE-Mail: ${email}%0D%0A%0D%0A${msg}`;
+    window.location.href = `mailto:info@ds-rokita.de?subject=${encodeURIComponent('Anfrage über die Website')}&body=${body}`;
+  });
+</script>
+</body>
+</html>
